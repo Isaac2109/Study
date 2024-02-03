@@ -1,8 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import TemplateView
+from .forms import MeuForm
 
-# Create your views here.
-
-
-def home(request):
-    return HttpResponse("Olá Study!!!!")
+class Home(TemplateView):
+    template_name = "study/home.html"
+    form_class = MeuForm
