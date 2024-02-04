@@ -19,14 +19,18 @@
 
     <main>
         <div style="display: flex; align-items: center; justify-content: center;">
-            <h1>Olá!</h1>
+          <h1>Olá!</h1>
         </div>
         <div style="display: block;">
-            <h5 style="display: flex; align-items: center; justify-content: center;">Pronto para o desafio?</h5>
+          <h5 style="display: flex; align-items: center; justify-content: center;">Pronto para o desafio?</h5>
 
-            <h5 style="display: flex; align-items: center; justify-content: center;">Digite o assunto em que você deseja ser desafiado</h5>
+          <h5 style="display: flex; align-items: center; justify-content: center;">Digite o assunto em que você deseja ser desafiado</h5>
         </div>
-        {{ form_class }}
+        <form action="" method="POST">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit">OK</button>
+        </form>
     </main>
 
 
