@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -24,13 +26,21 @@
         <div style="display: block;">
           <h5 style="display: flex; align-items: center; justify-content: center;">Pronto para o desafio?</h5>
 
-          <h5 style="display: flex; align-items: center; justify-content: center;">Digite o assunto em que você deseja ser desafiado</h5>
+          <h5 style="display: flex; align-items: center; justify-content: center;">Digite o assunto que você deseja</h5>
+
+          <h5 style="display: flex; align-items: center; justify-content: center;"> e escolha a dificuldade das perguntas</h5>
+        
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <form method="POST">
+              {% csrf_token %}
+
+              {{ form|crispy }}
+
+              <button type="submit" class="btn btn-primary">OK</button>
+            </form>
+          </div>
         </div>
-        <form action="" method="POST">
-          {% csrf_token %}
-          {{ form }}
-          <button type="submit">OK</button>
-        </form>
+
     </main>
 
 
