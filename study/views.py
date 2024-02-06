@@ -1,6 +1,7 @@
 from django.urls import reverse
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import MeuForm
+from api import consulta_api
 
 def home(request):
     if request.method == 'POST':
@@ -9,9 +10,9 @@ def home(request):
             assunto = form.cleaned_data['subject']
             dificuldade = form.cleaned_data['difficulty']
 
-            print(assunto, dificuldade)
+            consulta_api(dificuldade, assunto)
 
-            return HttpResponseRedirect(reverse('test', kwargs={'assunto' : assunto, 'dificuldade' : dificuldade}))
+            return HttpResponseRedirect(reverse('test'))
 
     else:
         form = MeuForm()
