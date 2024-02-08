@@ -9,14 +9,19 @@ def home(request):
         if form.is_valid():
             assunto = form.cleaned_data['subject']
             dificuldade = form.cleaned_data['difficulty']
+            qtd_questoes = form.cleaned_data['number']
 
-            consulta_api(dificuldade, assunto)
+            consulta = consulta_api(dificuldade, assunto, qtd_questoes)  
 
-            return HttpResponseRedirect(reverse('test'))
+            for num in range(int(qtd_questoes)):
+                contexto = {
+                    f'questao{num}': consulta[f'Questão{num}'],
+                    'qtd_questoes': qtd_questoes
+                }
+                
+
+            return render(request, 'study/test.html', context=contexto)
 
     else:
         form = MeuForm()
         return render(request, 'study/home.html', {'form': form})
-
-def test(request):
-    return render(request, 'study/test.html')
