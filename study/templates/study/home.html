@@ -31,10 +31,31 @@
           <h5 style="display: flex; align-items: center; justify-content: center;"> e escolha a dificuldade das perguntas</h5>
         
           <div style="display: flex; align-items: center; justify-content: center;">
-            <form method="POST">
+            
+            <form action="{% url "test" %}" method="POST">
               {% csrf_token %}
 
-              {{ form|crispy }}
+              <div class="form-floating mb-3">
+                <input type="text" name="assunto" class="form-control" id="floatingInput">
+                <label for="floatingInput">Assunto:</label>
+              </div>
+
+              <select name="dificuldade" class="form-select mb-4" aria-label="Default select example">
+                <option selected>Escolha a dificuldade</option>
+                <option value="fáceis">Fácil</option>
+                <option value="difíceis">Difícil</option>
+                <option value="muito difíceis">Muito Difícil</option>
+              </select>
+
+              <select name="qtd_questoes" class="form-select mb-4" aria-label="Default select example">
+                <option selected>Escolha a quantidade de questões</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              
 
               <button type="submit" class="btn btn-primary">OK</button>
             </form>
