@@ -3,8 +3,8 @@ from django import forms
 class MeuForm(forms.Form):
 
     CHOICES = (
-        ('fácil', 'Fácil'),
-        ('difícil', 'Difícil')
+        ('fáceis', 'Fácil'),
+        ('difíceis', 'Difícil')
     )
 
     QTD_QUESTOES = (
