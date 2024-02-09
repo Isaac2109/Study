@@ -1,1 +1,24 @@
-<h1>Resultado</h1>
+{% for num in n %}
+
+    {% if num == 1 %}
+        <p>{{resp_user1}}</p>
+        <p>{{resposta1}}</p>
+    {% endif %}
+    {% if num == 2 %}
+        <p>{{resp_user2}}</p>
+        <p>{{resposta2}}</p>
+    {% endif %}
+    {% if num == 3 %}
+        <p>{{resp_user3}}</p>
+        <p>{{resposta3}}</p>
+    {% endif %}
+    {% if num == 4 %}
+        <p>{{resp_user4}}</p>
+        <p>{{resposta4}}</p>
+    {% endif %}
+    {% if num == 5 %}
+        <p>{{resp_user5}}</p>
+        <p>{{resposta5}}</p>
+    {% endif %}
+
+{% endfor %}

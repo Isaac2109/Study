@@ -8,10 +8,13 @@ def consulta_api(dificuldade, assunto, qtd_questoes):
     link = "https://api.openai.com/v1/chat/completions"
     id_modelo = "gpt-3.5-turbo"
 
+    singular = "questão"
+    plural = "questões"
+
     body_mensagem = {
         'model': id_modelo,
         'messages': [
-            {'role': 'user','content': f"""Faça {qtd_questoes} questões {dificuldade} sobre {assunto} 
+            {'role': 'user','content': f"""Faça exatamente {qtd_questoes} {singular if qtd_questoes==1 else plural} {dificuldade} sobre {assunto} 
             com 4 alternativas de resposta 
             me retorne no formato de um dicionário python sem variáveis só o formato do dicionário  
             em que o número de cada questão 
@@ -32,6 +35,5 @@ def consulta_api(dificuldade, assunto, qtd_questoes):
 
     requisição = requests.post(link, headers=headers, data=body_mensagem)
     resposta = requisição.json()
-    print(resposta["choices"][0]["message"]["content"])
     return json.loads(resposta["choices"][0]["message"]["content"])
 
