@@ -34,18 +34,23 @@ def result(request):
 
     qtd_questoes = request.POST.get('qtd_questoes')
 
+    acertos = 0
+
     contexto = {
         'qtd_questoes': qtd_questoes,
-        'n': range(1, int(qtd_questoes) + 1)
+        'n': range(1, int(qtd_questoes) + 1),
+        'acertos': acertos
     }
 
     for num in range(1, int(qtd_questoes) + 1):
         resp_user = request.POST.get(f'alter_{num}')
         resposta = request.POST.get(f'resp{num}')
 
+        if resp_user == resposta:
+            acertos += 1
+            print(acertos)
+
         contexto.update({f"resp_user{num}": resp_user})
         contexto.update({f"resposta{num}": resposta})
-
-
 
     return render(request, 'study/result.html', context=contexto)
