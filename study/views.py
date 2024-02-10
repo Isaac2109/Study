@@ -39,7 +39,6 @@ def result(request):
     contexto = {
         'qtd_questoes': qtd_questoes,
         'n': range(1, int(qtd_questoes) + 1),
-        'acertos': acertos
     }
 
     for num in range(1, int(qtd_questoes) + 1):
@@ -48,7 +47,9 @@ def result(request):
 
         if resp_user == resposta:
             acertos += 1
-            print(acertos)
+
+        if num == int(qtd_questoes):
+            contexto.update({'acertos': acertos})
 
         contexto.update({f"resp_user{num}": resp_user})
         contexto.update({f"resposta{num}": resposta})

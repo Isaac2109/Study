@@ -5,45 +5,76 @@
 {% block content %}
 
     <div class="container">
-        <h4>Veja seus resultados:</h4>
+        
+        <h4>Gabarito:</h4>
+        
+        <div class="container">
+            {% for num in n %}
+
+                {% if num == 1 %}
+                    <div class="container">
+                        <h6>1&#41;</h6>
+                        <div class="container">
+                            <p><strong>Sua resposta foi:</strong> {{resp_user1}}</p>
+                            <p><strong>A resposta correta era:</strong> {{resposta1}}.</p>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% if num == 2 %}
+                    <div class="container">
+                        <h6>2&#41;</h6>
+                        <div class="container">
+                            <p><strong>Sua resposta foi:</strong> {{resp_user2}}</p>
+                            <p><strong>A resposta correta era:</strong> {{resposta2}}.</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if num == 3 %}
+                    <div class="container">
+                        <h6>3&#41;</h6>
+                        <div class="container">
+                            <p><strong>Sua resposta foi:</strong> {{resp_user3}}</p>
+                            <p><strong>A resposta correta era:</strong> {{resposta3}}.</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if num == 4 %}
+                    <div class="container">
+                        <h6>4&#41;</h6>
+                        <div class="container">
+                            <p><strong>Sua resposta foi:</strong> {{resp_user4}}</p>
+                            <p><strong>A resposta correta era:</strong> {{resposta4}}.</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if num == 5 %}
+                    <div class="container">
+                        <h6>5&#41;</h6>
+                        <div class="container">
+                            <p><strong>Sua resposta foi:</strong> {{resp_user5}}</p>
+                            <p><strong>A resposta correta era:</strong> {{resposta5}}.</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
 
         <div class="container">
-            <h6>Você acertou {{acertos}}/{{qtd_questoes}}</h6>
+            {% if acertos < 3 %}
+                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
+            {% endif %}
+            {% if acertos == 3 %}
+                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Você não foi nem mal nem bem, está na média, mas pode melhorar.</h3>
+            {% endif %}
+            {% if acertos > 3 %}
+                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Parabéns! Você está no caminho certo, continue assim.</h3>
+            {% endif %}
+            
         </div>
     </div>
-
-    
-
-
-
-
-    {% for num in n %}
-
-        {% if num == 1 %}
-            <p>{{resp_user1}}</p>
-            <p>{{resposta1}}</p>
-        {% endif %}
-
-        {% if num == 2 %}
-            <p>{{resp_user2}}</p>
-            <p>{{resposta2}}</p>
-        {% endif %}
-
-        {% if num == 3 %}
-            <p>{{resp_user3}}</p>
-            <p>{{resposta3}}</p>
-        {% endif %}
-
-        {% if num == 4 %}
-            <p>{{resp_user4}}</p>
-            <p>{{resposta4}}</p>
-        {% endif %}
-
-        {% if num == 5 %}
-            <p>{{resp_user5}}</p>
-            <p>{{resposta5}}</p>
-        {% endif %}
-
-    {% endfor %}
-
 {% endblock content %}
