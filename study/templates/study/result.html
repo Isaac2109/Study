@@ -2,6 +2,26 @@
 
 {% block page_title %}Resultado{% endblock page_title %}
 
+{% block style %}
+<style>
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-decoration: none;
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    a:hover {
+        background-color: #2980b9;
+    }
+</style>
+{% endblock style %}
+
+
 {% block content %}
 <main>
     <div class="container">
@@ -120,7 +140,7 @@
                 <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
             {% endif %}
 
-            <a href="{% url "home" %}">Fazer novo teste</a>
+            <a style="margin-bottom: 5%;" href="{% url "subject" %}">Fazer novo teste</a>
             
         </div>
     </div>
