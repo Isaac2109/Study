@@ -3,10 +3,13 @@ from django.shortcuts import render, HttpResponsePermanentRedirect
 from api import consulta_api
 
 def home(request):
+    return render(request, 'study/home.html')
+
+def subject(request):
     if request.method == 'POST':
         return HttpResponsePermanentRedirect(reverse(test))
     else:
-        return render(request, 'study/home.html')
+        return render(request, 'study/subject.html')
     
 def test(request):
     

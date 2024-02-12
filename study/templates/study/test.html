@@ -3,7 +3,7 @@
 {% block page_title %}Teste{% endblock page_title %}
 
 {% block content %}
-
+<main>
   <form action="{% url "result" %}" method="POST">
     {% csrf_token %}
 
@@ -203,5 +203,5 @@
     <button style="margin-left: 2%; margin-bottom: 3%;" type="submit" class="btn btn-primary">OK</button>
   
   </form>
-
+</main>
 {% endblock content %}

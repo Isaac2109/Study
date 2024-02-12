@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block page_title %}Configure sua Prova{% endblock page_title %}
+
+{% block content %}
+<main>
+  <div style="display: block;">
+    <h1 style="display: flex; align-items: center; justify-content: center;">Pronto para o desafio?</h1>
+
+    <h5 style="display: flex; align-items: center; justify-content: center;">Digite o assunto que você deseja</h5>
+
+    <h5 style="display: flex; align-items: center; justify-content: center;">escolha a dificuldade das perguntas</h5>
+
+    <h5 style="display: flex; align-items: center; justify-content: center;">e a quantidade de questões</h5>
+
+    <div style="display: flex; align-items: center; justify-content: center;">
+
+      <form action="{% url "test" %}" method="POST">
+        {% csrf_token %}
+
+        <div class="form-floating mb-3">
+          <input required type="text" name="assunto" class="form-control" id="floatingInput">
+          <label for="floatingInput">Assunto:</label>
+        </div>
+
+        <select required name="dificuldade" class="form-select mb-4" aria-label="Default select example">
+          <option selected>Escolha a dificuldade</option>
+          <option value="fáceis">Fácil</option>
+          <option value="difíceis">Difícil</option>
+          <option value="muito difíceis">Muito Difícil</option>
+        </select>
+
+        <select required name="qtd_questoes" class="form-select mb-4" aria-label="Default select example">
+          <option selected>Escolha a quantidade de questões</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">OK</button>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock content %}

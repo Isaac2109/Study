@@ -1,48 +1,77 @@
 {% extends "base.html" %}
 
-{% block page_title %}Home{% endblock page_title %}
+{% load static %}
+
+{% block page_title %}Sua plataforma de estudos personalizada{% endblock page_title %}
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    header {
+        background-color: #3498db;
+        color: #fff;
+        text-align: center;
+        padding: 1em;
+    }
+
+    section {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-decoration: none;
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #2980b9;
+    }
+</style>
+{% endblock style %}
 
 {% block content %}
-  <div style="display: flex; align-items: center; justify-content: center;">
-    <h1>Olá!</h1>
-  </div>
-  <div style="display: block;">
-    <h5 style="display: flex; align-items: center; justify-content: center;">Pronto para o desafio?</h5>
+<header>
+    <h1>Stydy - Sua plataforma de estudos personalizada</h1>
+</header>
 
-    <h5 style="display: flex; align-items: center; justify-content: center;">Digite o assunto que você deseja</h5>
+<section>
+    <p>Bem-vindo ao Stydy, a plataforma que vai revolucionar a sua forma de estudar! Utilizando a inteligência artificial do ChatGPT, oferecemos a você a oportunidade de criar provas personalizadas sobre qualquer assunto que desejar.</p>
 
-    <h5 style="display: flex; align-items: center; justify-content: center;">escolha a dificuldade das perguntas</h5>
+    <img src="{% static "study/estudante.jpg" %}" alt="Imagem de estudante com livros">
+    <img src="{% static "study/provaonline.jpg" %}" alt="Imagem de laptop com gráficos educacionais">
 
-    <h5 style="display: flex; align-items: center; justify-content: center;">e a quantidade de questões</h5>
+    <p>Teste seus conhecimentos com questões geradas automaticamente pela IA, e eleve o nível dos seus estudos de forma interativa e envolvente.</p>
 
-    <div style="display: flex; align-items: center; justify-content: center;">
-
-      <form action="{% url "test" %}" method="POST">
-        {% csrf_token %}
-
-        <div class="form-floating mb-3">
-          <input required type="text" name="assunto" class="form-control" id="floatingInput">
-          <label for="floatingInput">Assunto:</label>
-        </div>
-
-        <select required name="dificuldade" class="form-select mb-4" aria-label="Default select example">
-          <option selected>Escolha a dificuldade</option>
-          <option value="fáceis">Fácil</option>
-          <option value="difíceis">Difícil</option>
-          <option value="muito difíceis">Muito Difícil</option>
-        </select>
-
-        <select required name="qtd_questoes" class="form-select mb-4" aria-label="Default select example">
-          <option selected>Escolha a quantidade de questões</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-
-        <button type="submit" class="btn btn-primary">OK</button>
-      </form>
-    </div>
-  </div>
+    <a href="{% url "subject" %}">Comece agora! Configure sua prova</a>
+</section>
 {% endblock content %}
+
