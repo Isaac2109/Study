@@ -65,15 +65,62 @@
         </div>
 
         <div class="container">
-            {% if acertos < 3 %}
-                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
+
+            {% if qtd_questoes == 1 %}
+            
+                {% if acertos == 1 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Parabéns!</h3>
+                {% else %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
+                {% endif %}
+            
             {% endif %}
-            {% if acertos == 3 %}
-                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Você não foi nem mal nem bem, está na média, mas pode melhorar.</h3>
+
+            {% if qtd_questoes == 2 %}
+            
+                {% if acertos == 2 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Parabéns! Você está no caminho certo, continue assim.</h3>
+                {% elif acertos == 1 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Você não foi nem mal nem bem, está na média, mas pode melhorar.</h3>
+                {% else %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
+                {% endif %}
+            
             {% endif %}
+
+            {% if qtd_questoes == 3 %}
+            
+                {% if acertos == 3 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Parabéns! Você está no caminho certo, continue assim.</h3>
+                {% elif acertos == 2 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Você está quase lá, mas pode melhorar.</h3>
+                {% else %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
+                {% endif %}
+            
+            {% endif %}
+
+            {% if qtd_questoes == 4 %}
+            
+                {% if acertos > 2 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Parabéns! Você está no caminho certo, continue assim.</h3>
+                {% elif acertos == 2 %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Você não foi nem mal nem bem, está na média, mas pode melhorar.</h3>
+                {% else %}
+                    <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
+                {% endif %}
+            
+            {% endif %}
+
             {% if acertos > 3 %}
                 <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Parabéns! Você está no caminho certo, continue assim.</h3>
+            {% elif acertos == 3 %}
+                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Você não foi nem mal nem bem, está na média, mas pode melhorar.</h3>
+            {% else %}
+                <h3>Você acertou {{acertos}}/{{qtd_questoes}} <br>Que pena! Você foi abaixo do esperado, precisa melhorar! </h3>
             {% endif %}
+
+            <a href="{% url "home" %}">Fazer novo teste</a>
             
         </div>
     </div>
